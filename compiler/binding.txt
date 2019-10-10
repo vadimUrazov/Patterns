@@ -1,0 +1,4 @@
+R0 1.0
+R1 0.5
+Bx true
+By false
