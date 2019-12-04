@@ -60,10 +60,10 @@ public class GoodsServiceTest {
         packSetGoods1.getList().add(packSetGoods2);
         list2.add(packSetGoods);
         list2.add(packSetGoods1);
-
-        Filter filter = new BeginStringFilter("pie");
+list2.add(new PackWeightGoods("abcd", "qwer", pack, 1));
+        Filter filter = new BeginStringFilter("abc");
         Shipment shipment = new Shipment(list2);
-        assertEquals(2, GoodsService.countByFilterDeep1(shipment, filter));
+        assertEquals(1, GoodsService.countByFilterDeep(shipment, filter));
 
     }
 

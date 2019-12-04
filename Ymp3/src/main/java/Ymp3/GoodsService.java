@@ -38,46 +38,12 @@ public class GoodsService {
         return count;
     }
 
-    public static int countByFilterDeep1(Shipment sh, Filter filter) {
-        int count = 0;
-        for (PackedGoods pack : sh.getList()) {
+    public static int countByFilterDeep(Shipment sh, Filter filter) {
 
+                return deep(sh.getList(), filter);
 
-            if (isPackSetGoodsOf(pack)) {
-
-                List<PackedGoods> list = ((PackSetGoods) pack).getList();
-                deep(list, filter);
-
-
-                for (PackedGoods p : list) {
-                    if (filter.apply(p.getName())) {
-                        count += 1;
-                    }
-                }
-            }
         }
 
-
-        return count;
-    }
-
-//    public static int countByFilterDeep(Shipment sh, Filter filter) {
-//        int count = 0;
-//        for (PackedGoods pack : sh.getList()) {
-//            if (pack.isPackegeSet()) {
-//                List<PackedGoods> list = ((PackSetGoods) pack).getList();
-//                for (PackedGoods p : list) {
-//                    if (filter.apply(p.getName())) {
-//                        count += 1;
-//                        break;
-//                    }
-//                }
-//
-//            }
-//        }
-//
-//        return count;
-//    }
 
     public static boolean deepCheck(List<PackedGoods> p) {
         boolean z=true;
@@ -98,20 +64,8 @@ public class GoodsService {
     }
 
     public static boolean checkAllWeighted(Shipment sh) {
-        boolean isWeight=true;
-        for (int i = 0; i < sh.getList().size(); i++) {
-            if (sh.getList().get(i) instanceof PackSetGoods) {
-                List<PackedGoods> list = ((PackSetGoods) sh.getList().get(i)).getList();
-                isWeight = deepCheck(list);
-            } else {
-                if (!(sh.getList().get(i) instanceof PackWeightGoods)) {
-                    return false;
-                }
-            }
 
-        }
+        return deepCheck(sh.getList());
 
-        return isWeight;
     }
-
 }
