@@ -36,7 +36,7 @@ public class TestMatrix {
     }
 
     @Test
-    public void testGeterandSetter() {
+    public void testGetterAndSetter() {
         Matrix matrix = new Matrix(2);
         matrix.setElem(0, 0, 1);
         matrix.setElem(0, 1, 2);
@@ -87,7 +87,7 @@ public class TestMatrix {
     }
 
     @Test
-    public void testDiagAndTrianglematrix() {
+    public void testDiagAndTriangleMatrix() {
         UpTriangleMatrix upTriangleMatrix = new UpTriangleMatrix(2);
         upTriangleMatrix.setElem(0, 0, 0);
         upTriangleMatrix.setElem(1, 0, 0);
