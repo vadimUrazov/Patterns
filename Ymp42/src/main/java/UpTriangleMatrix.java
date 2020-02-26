@@ -5,7 +5,7 @@ public class UpTriangleMatrix extends Matrix {
 
     @Override
     public void setElem(int i, int j, double value) {
-        if (value != 0 && j >=i) {
+        if (value != 0 && j >= i) {
             throw new ArrayIndexOutOfBoundsException("Error_Array");
         }
         super.setElem(i, j, value);

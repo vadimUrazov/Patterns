@@ -59,8 +59,8 @@ public class TestMatrix {
         Throwable thrown = assertThrows(IllegalArgumentException.class, () -> {
             diagMatrix1.setElem(0, 1, 2);
         });
-        assertNotNull(thrown.getMessage());
 
+        assertNotNull(thrown.getMessage());
     }
 
     @Test
@@ -117,13 +117,26 @@ public class TestMatrix {
         matrix.setElem(1, 0, 0);
         matrix.setElem(1, 1, 1);
 
-
         Matrix matrix1 = new Matrix(2);
         matrix1.setElem(0, 0, 1);
         matrix1.setElem(0, 1, 1);
         matrix1.setElem(1, 0, 1);
         matrix1.setElem(1, 1, 2);
 
+        Matrix matrix2 = new Matrix(2);
+        matrix2.setElem(0, 0, 4);
+        matrix2.setElem(0, 1, 0);
+        matrix2.setElem(1, 0, 0);
+        matrix2.setElem(1, 1, 1);
+
+        Matrix matrix3 = new Matrix(2);
+        matrix3.setElem(0, 0, -4);
+        matrix3.setElem(0, 1, 0);
+        matrix3.setElem(1, 0, 0);
+        matrix3.setElem(1, 1, 1);
+
+        assertTrue(MatrixService.compareMatrix(matrix3, matrix) < 0);
+        assertTrue(MatrixService.compareMatrix(matrix2, matrix) > 0);
         assertEquals(0, MatrixService.compareMatrix(matrix1, matrix));
     }
 
