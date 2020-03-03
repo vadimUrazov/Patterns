@@ -3,5 +3,5 @@ public interface IMatrix {
 
     void setElem(int i, int j, double value);
 
-    double determinant();
+    double getDeterminant();
 }

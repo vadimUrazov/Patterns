@@ -17,22 +17,19 @@ public class TestMatrix {
         matrix.setElem(1, 1, 4);
 
         Matrix matrix1 = new Matrix(3);
-        matrix1.setElem(0, 0, 0);
+        matrix1.setElem(0, 0, 1);
         matrix1.setElem(0, 1, 0);
-        matrix1.setElem(0, 2, 1);
-        matrix1.setElem(1, 0, 1);
+        matrix1.setElem(0, 2, 0);
+        matrix1.setElem(1, 0, 0);
         matrix1.setElem(1, 1, 1);
-        matrix1.setElem(1, 2, 1);
-        matrix1.setElem(2, 0, 2);
-        matrix1.setElem(2, 1, 2);
+        matrix1.setElem(1, 2, 0);
+        matrix1.setElem(2, 0, 0);
+        matrix1.setElem(2, 1, 0);
         matrix1.setElem(2, 2, 1);
 
-
-        assertEquals(1.0, m.determinant());
-        assertEquals(-6.0, matrix.determinant());
-        assertEquals(0.0, matrix1.determinant());
-
-
+        assertEquals(1, matrix1.getDeterminant());
+        assertEquals(1.0, m.getDeterminant());
+        assertEquals(-6.0, matrix.getDeterminant());
     }
 
     @Test
@@ -44,7 +41,7 @@ public class TestMatrix {
         matrix.setElem(1, 1, 4);
 
         UpTriangleMatrix upTriangleMatrix = new UpTriangleMatrix(2);
-        upTriangleMatrix.setElem(0, 0, 0);
+        upTriangleMatrix.setElem(0, 0, 1);
         upTriangleMatrix.setElem(1, 0, 0);
         upTriangleMatrix.setElem(1, 1, 0);
 
@@ -102,43 +99,44 @@ public class TestMatrix {
         diagMatrix1.setElem(2, 2, 1);
 
 
-        assertEquals(3, diagMatrix.determinant());
-        assertEquals(0, upTriangleMatrix.determinant());
-        assertEquals(2, diagMatrix1.determinant());
+        assertEquals(3, diagMatrix.getDeterminant());
+        assertEquals(0, upTriangleMatrix.getDeterminant());
+        assertEquals(2, diagMatrix1.getDeterminant());
 
     }
 
-    @Test
-    public void testMatrixServiceCompare() {
+//    @Test
+//    public void testMatrixServiceCompare() {
+//
+//        Matrix matrix = new Matrix(2);
+//        matrix.setElem(0, 0, 1);
+//        matrix.setElem(0, 1, 0);
+//        matrix.setElem(1, 0, 0);
+//        matrix.setElem(1, 1, 1);
+//
+//        Matrix matrix1 = new Matrix(2);
+//        matrix1.setElem(0, 0, 1);
+//        matrix1.setElem(0, 1, 1);
+//        matrix1.setElem(1, 0, 1);
+//        matrix1.setElem(1, 1, 2);
+//
+//        Matrix matrix2 = new Matrix(2);
+//        matrix2.setElem(0, 0, 4);
+//        matrix2.setElem(0, 1, 0);
+//        matrix2.setElem(1, 0, 0);
+//        matrix2.setElem(1, 1, 1);
+//
+//        Matrix matrix3 = new Matrix(2);
+//        matrix3.setElem(0, 0, -4);
+//        matrix3.setElem(0, 1, 0);
+//        matrix3.setElem(1, 0, 0);
+//        matrix3.setElem(1, 1, 1);
+//
+//        assertTrue(MatrixService.compareMatrix(matrix3, matrix) < 0);
+//        assertTrue(MatrixService.compareMatrix(matrix2, matrix) > 0);
+//        assertEquals(0, MatrixService.compareMatrix(matrix1, matrix));
+//    }
 
-        Matrix matrix = new Matrix(2);
-        matrix.setElem(0, 0, 1);
-        matrix.setElem(0, 1, 0);
-        matrix.setElem(1, 0, 0);
-        matrix.setElem(1, 1, 1);
-
-        Matrix matrix1 = new Matrix(2);
-        matrix1.setElem(0, 0, 1);
-        matrix1.setElem(0, 1, 1);
-        matrix1.setElem(1, 0, 1);
-        matrix1.setElem(1, 1, 2);
-
-        Matrix matrix2 = new Matrix(2);
-        matrix2.setElem(0, 0, 4);
-        matrix2.setElem(0, 1, 0);
-        matrix2.setElem(1, 0, 0);
-        matrix2.setElem(1, 1, 1);
-
-        Matrix matrix3 = new Matrix(2);
-        matrix3.setElem(0, 0, -4);
-        matrix3.setElem(0, 1, 0);
-        matrix3.setElem(1, 0, 0);
-        matrix3.setElem(1, 1, 1);
-
-        assertTrue(MatrixService.compareMatrix(matrix3, matrix) < 0);
-        assertTrue(MatrixService.compareMatrix(matrix2, matrix) > 0);
-        assertEquals(0, MatrixService.compareMatrix(matrix1, matrix));
-    }
 
     @Test
     public void testMatrixServiceSort() {
@@ -166,7 +164,7 @@ public class TestMatrix {
         matrix3.setElem(1, 0, 1);
         matrix3.setElem(1, 1, 2);
 
-        Matrix matrix4 = new Matrix(3);
+        Matrix matrix4 = new DiagMatrix(3);
         matrix4.setElem(0, 0, 1);
         matrix4.setElem(0, 1, 0);
         matrix4.setElem(0, 2, 0);

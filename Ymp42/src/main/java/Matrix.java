@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 import java.util.Objects;
 
+
 public class Matrix implements IMatrix {
     private int N;
     private double[] matrix;
@@ -36,65 +37,6 @@ public class Matrix implements IMatrix {
     }
 
 
-    public double determinant() {
-        double det;
-        if (isActive) {
-            return determ;
-        }
-        int n = getN();
-        double a[][] = new double[n][n];
-        for (int q = 0; q < n; q++) {
-            for (int s = 0; s < n; s++) {
-                a[q][s] = getElem(q, s);
-            }
-        }
-        det = deter(a, n);
-        determ = det;
-        isActive = true;
-        return det;
-    }
-
-    void getMatr(double[][] mas, double[][] p, int i, int j, int m) {
-        int ki, kj, di, dj;
-        di = 0;
-        for (ki = 0; ki < m - 1; ki++) {
-            if (ki == i) di = 1;
-            dj = 0;
-            for (kj = 0; kj < m - 1; kj++) {
-                if (kj == j) dj = 1;
-                p[ki][kj] = mas[ki + di][kj + dj];
-            }
-        }
-    }
-
-    double deter(double[][] mas, int m) {
-        int i, k, n;
-        double[][] p;
-        double d;
-        p = new double[m][m];
-
-        d = 0;
-        k = 1;
-        n = m - 1;
-        if (m == 1) {
-            d = mas[0][0];
-            return d;
-        }
-        if (m == 2) {
-            d = mas[0][0] * mas[1][1] - mas[1][0] * mas[0][1];
-            return d;
-        }
-        if (m > 2) {
-            for (i = 0; i < m; i++) {
-                getMatr(mas, p, i, 0, m);
-
-                d = d + k * mas[i][0] * deter(p, n);
-                k = -k;
-            }
-        }
-        return d;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,13 +53,50 @@ public class Matrix implements IMatrix {
         return result;
     }
 
+    public double getDeterminant() {
+        double det;
+        if (isActive) {
+            return determ;
+        }
+
+        det = 1;
+        int h = 0;
+        double buf2;
+        double[] buf = new double[N * N];
+        for (int i = 0; i < N * N; i++) {
+            buf[i] = matrix[i];
+        }
+
+        for (int i = 1; i < N; i++) {
+            if (buf[h] == 0.0) {
+                for (int k = 1; k < (N - i + 1); k++) {
+                    if (buf[k * N + h] != 0.0) {
+                        for (int t = 0; t < (N - i + 1); t++) {
+                            buf[h + t] = buf[h + t] + buf[k * N + h + t];
+                        }
+                        break;
+                    }
+                }
+            }
+            if (buf[h] != 0.0) {
+                for (int q = i; q < N; q++) {
+                    buf2 = buf[h + (q - i + 1) * N];
+                    for (int j = 0; j < N; j++) {
+                        buf[j + N * q] = buf[j + N * q] - (buf[j + (i - 1) * N] / buf[h] * buf2);
+                    }
+                }
+            }
+            det *= buf[h];
+            h += (N + 1);
+        }
+        det *= buf[h];
+
+        this.determ = det;
+        isActive = true;
+        return det;
+    }
 
 }
-
-
-
-
-
 
 
 
