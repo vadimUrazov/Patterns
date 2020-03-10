@@ -40,14 +40,13 @@ public class TestDataIterator {
 
     @Test
     public  void testNextExc(){
-        Throwable thrown = assertThrows(IndexOutOfBoundsException.class, () -> {
+        Throwable thrown = assertThrows(Exception.class, () -> {
 
             Data obj = new Data();
             DataIterator iter = new DataIterator(obj);
             iter.next();
         });
-
-        assertNotNull(thrown.getMessage());
+        assertNull(thrown.getMessage());
 
 
     }

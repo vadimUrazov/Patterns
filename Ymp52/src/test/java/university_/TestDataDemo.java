@@ -22,5 +22,14 @@ public class TestDataDemo {
         res.add(7);
         assertEquals(DataDemo.getAll(obj), res);
     }
+    @Test
+    public void testGetAll2(){
+        Data obj = new Data("Luis", new Group(1), new Group(2, 4, 5),
+                new Group(5));
+        ArrayList<Integer> res = new ArrayList<>();
+         res.add(4);
+        res.add(5);
+        assertEquals(DataDemo.getAll(obj), res);
+    }
 }
 

@@ -1,52 +1,63 @@
 package university_;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Group {
     private int id;
-    private List<Integer> data;
+    private Integer[] data;
 
     public Group() {
         id = 1;
-        data = new ArrayList<>();
+        data = new Integer[1000];
     }
 
     public Group(int id, int... data)  {
         setId(id);
-        this.data = new ArrayList<>();
+        List<Integer> l= new ArrayList<>();
+        this.data = new Integer[1000];
+
+
         for (int i = 0; i < data.length; i++) {
-            this.data.add(data[i]);
+            l.add(data[i]);
+
         }
+        this.data=l.toArray(new Integer[0]);
     }
 
     public Group(Group obj) {
+        List<Integer> l= new ArrayList<>();
         this.id = obj.id;
-        this.data = new ArrayList<>();
-        for (int i = 0; i < obj.data.size(); i++) {
-            this.data.add(obj.data.get(i));
+        this.data = new Integer[1000];
+        for (int i = 0; i < obj.data.length; i++) {
+
+           l.add(obj.data[i]);
         }
+        this.data=l.toArray(new Integer[0]);
     }
 
     public Group(Group obj, int id) {
+        List<Integer> l= new ArrayList<>();
         this.id = id;
-        this.data = new ArrayList<>();
-        for (int i = 0; i < obj.data.size(); i++) {
-            this.data.add(obj.data.get(i));
+        this.data = new Integer[1000];
+        for (int i = 0; i < obj.data.length; i++) {
+           l.add(obj.data[i]);
         }
+        this.data=l.toArray(new Integer[0]);
     }
 
     public int getId() {
         return id;
     }
 
-    public List<Integer> getData() {
+    public Integer[] getData() {
         return data;
     }
 
     public int length() {
-        return data.size();
+        return data.length;
     }
 
     public void setId(int id) {
@@ -56,28 +67,31 @@ public class Group {
         this.id = id;
     }
 
-    public void setData(List<Integer> data) {
-        this.data.clear();
-        for (int i = 0; i < data.size(); i++) {
-            this.data.add(data.get(i));
+    public void setData(Integer[] data) {
+        List<Integer> l= new ArrayList<>();
+
+
+        for (int i = 0; i < data.length; i++) {
+            l.add(data[i]);
+
         }
+        this.data=l.toArray(new Integer[0]);
     }
 
     public void setData(int... data) {
-        this.data.clear();
-        for (int i = 0; i < data.length; i++) {
-            this.data.add(data[i]);
+        List<Integer> l= new ArrayList<>();
+        for (Integer i: data) {
+            l.add(i);
         }
+        setData(l.toArray(new Integer[0]));
     }
 
-    public void addData(List<Integer> data) {
-        this.data.addAll(data);
-    }
-
-    public void addData(int... data) {
-        for (int i = 0; i < data.length; i++) {
-            this.data.add(data[i]);
-        }
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", data=" + Arrays.toString(data) +
+                '}';
     }
 
     @Override
@@ -86,7 +100,7 @@ public class Group {
         if (!(o instanceof Group)) return false;
         Group group = (Group) o;
         return getId() == group.getId() &&
-                Objects.equals(getData(), group.getData());
+                Arrays.equals(getData(), group.getData());
     }
 
     @Override

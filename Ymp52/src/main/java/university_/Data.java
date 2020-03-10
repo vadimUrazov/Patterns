@@ -1,40 +1,47 @@
 package university_;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Data implements Iterable {
     private String nameOfSet;
-    private List<Group> set;
+    private Group[] set;
 
     public Data() {
         nameOfSet = "Default Data";
-        set = new ArrayList<>();
+        set = new Group[1000];
     }
 
     public Data(String nameOfSet, Group... data) {
         this.nameOfSet = nameOfSet;
-        set = new ArrayList<>();
+        List<Group> l= new ArrayList<>();
+        set = new Group[1000];
         for (int i = 0; i < data.length; i++) {
-            set.add(new Group(data[i]));
+            l.add(new Group(data[i]));
         }
+        set=l.toArray(new Group[0]);
     }
 
     public Data(Data obj) {
         this.nameOfSet = obj.nameOfSet;
-        set = new ArrayList<>();
-        for (int i = 0; i < obj.set.size(); i++) {
-            set.add(new Group(obj.set.get(i)));
+        set = new Group[1000];
+        List<Group> l= new ArrayList<>();
+        for (int i = 0; i < obj.set.length; i++) {
+            l.add(new Group(obj.set[i]));
         }
+        set=l.toArray(new Group[0]);
     }
 
     public Data(Data obj, String nameOfSet) {
         this.nameOfSet = nameOfSet;
-        set = new ArrayList<>();
-        for (int i = 0; i < obj.set.size(); i++) {
-            set.add(obj.set.get(i));
+        List<Group> l= new ArrayList<>();
+        set = new Group[1000];
+        for (int i = 0; i < obj.set.length; i++) {
+            l.add(obj.set[i]);
         }
+        set=l.toArray(new Group[0]);
     }
 
     public void setNameOfSet(String nameOfSet) {
@@ -45,38 +52,36 @@ public class Data implements Iterable {
         return nameOfSet;
     }
 
-    public void setSet(ArrayList<Group> set) {
-        this.set.clear();
-        for (int i = 0; i < set.size(); i++) {
-            this.set.add(new Group(set.get(i)));
+    public void setGroupArray(Group[] set) {
+        List<Group> l= new ArrayList<>();
+        for (int i = 0; i < set.length; i++) {
+            l.add(new Group(set[i]));
         }
+        this.set=l.toArray(new Group[0]);
     }
 
     public void setSet(Group... set) {
-        this.set.clear();
-        for (int i = 0; i < set.length; i++) {
-            this.set.add(new Group(set[i]));
+        List<Group> l= new ArrayList<>();
+        for (Group i: set) {
+            l.add(i);
         }
+        setGroupArray(l.toArray(new Group[0]));
     }
 
-    public List<Group> getSet() {
+    public Group[] getSet() {
         return set;
     }
 
-    public void addSet(List<Group> set) {
-        for (int i = 0; i < set.size(); i++) {
-            this.set.add(new Group(set.get(i)));
-        }
-    }
-
-    public void addSet(Group... set) {
-        for (int i = 0; i < set.length; i++) {
-            this.set.add(new Group(set[i]));
-        }
+    @Override
+    public String toString() {
+        return "Data{" +
+                "nameOfSet='" + nameOfSet + '\'' +
+                ", set=" + Arrays.toString(set) +
+                '}';
     }
 
     public int length() {
-        return this.set.size();
+        return this.set.length;
     }
 
     @Override
@@ -91,7 +96,7 @@ public class Data implements Iterable {
         if (!(o instanceof Data)) return false;
         Data data = (Data) o;
         return Objects.equals(getNameOfSet(), data.getNameOfSet()) &&
-                Objects.equals(getSet(), data.getSet());
+                Arrays.equals(getSet(), data.getSet());
     }
 
     @Override

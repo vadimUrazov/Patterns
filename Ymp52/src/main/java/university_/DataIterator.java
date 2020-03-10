@@ -1,6 +1,9 @@
 package university_;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class DataIterator implements Iterator<Integer> {
     private int index;
@@ -15,26 +18,26 @@ public class DataIterator implements Iterator<Integer> {
     public boolean hasNext() {
         int size = 0;
         for (int i = 0; i < setOfGroups.length(); i++) {
-            size += setOfGroups.getSet().get(i).length();
+            size += setOfGroups.getSet()[i].length();
+
         }
-        return (index+1) < size;
+        return (index + 1) < size;
     }
 
     @Override
-    public Integer next(){
-        if(!hasNext()){
+    public Integer next() {
 
-        }
+
         index++;
-        int res, curentIndex=index, i=0;
-        for(i=0; i<setOfGroups.length(); i++){
-            if(curentIndex<setOfGroups.getSet().get(i).length()){
+        int res, curentIndex = index, i = 0;
+        for (i = 0; i < setOfGroups.length(); i++) {
+            if (curentIndex < setOfGroups.getSet()[i].length()) {
                 break;
             }
-            if(curentIndex>=setOfGroups.getSet().get(i).length()){
-                curentIndex-=setOfGroups.getSet().get(i).length();
+            if (curentIndex >= setOfGroups.getSet()[i].length()) {
+                curentIndex -= setOfGroups.getSet()[i].length();
             }
         }
-        return setOfGroups.getSet().get(i).getData().get(curentIndex);
+        return setOfGroups.getSet()[i].getData()[curentIndex];
     }
 }
