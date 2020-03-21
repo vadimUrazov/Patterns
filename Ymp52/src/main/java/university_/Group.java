@@ -17,8 +17,6 @@ public class Group {
     public Group(int id, int... data)  {
         setId(id);
         List<Integer> l= new ArrayList<>();
-        this.data = new Integer[1000];
-
 
         for (int i = 0; i < data.length; i++) {
             l.add(data[i]);
@@ -30,7 +28,6 @@ public class Group {
     public Group(Group obj) {
         List<Integer> l= new ArrayList<>();
         this.id = obj.id;
-        this.data = new Integer[1000];
         for (int i = 0; i < obj.data.length; i++) {
 
            l.add(obj.data[i]);
@@ -41,7 +38,6 @@ public class Group {
     public Group(Group obj, int id) {
         List<Integer> l= new ArrayList<>();
         this.id = id;
-        this.data = new Integer[1000];
         for (int i = 0; i < obj.data.length; i++) {
            l.add(obj.data[i]);
         }

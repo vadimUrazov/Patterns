@@ -1,9 +1,6 @@
 package university_;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Data implements Iterable {
     private String nameOfSet;
@@ -17,7 +14,6 @@ public class Data implements Iterable {
     public Data(String nameOfSet, Group... data) {
         this.nameOfSet = nameOfSet;
         List<Group> l= new ArrayList<>();
-        set = new Group[1000];
         for (int i = 0; i < data.length; i++) {
             l.add(new Group(data[i]));
         }
@@ -26,7 +22,6 @@ public class Data implements Iterable {
 
     public Data(Data obj) {
         this.nameOfSet = obj.nameOfSet;
-        set = new Group[1000];
         List<Group> l= new ArrayList<>();
         for (int i = 0; i < obj.set.length; i++) {
             l.add(new Group(obj.set[i]));
@@ -37,8 +32,7 @@ public class Data implements Iterable {
     public Data(Data obj, String nameOfSet) {
         this.nameOfSet = nameOfSet;
         List<Group> l= new ArrayList<>();
-        set = new Group[1000];
-        for (int i = 0; i < obj.set.length; i++) {
+         for (int i = 0; i < obj.set.length; i++) {
             l.add(obj.set[i]);
         }
         set=l.toArray(new Group[0]);
@@ -85,7 +79,7 @@ public class Data implements Iterable {
     }
 
     @Override
-    public DataIterator iterator() {
+    public Iterator<Integer> iterator() {
         DataIterator iter = new DataIterator(this);
         return iter;
     }
