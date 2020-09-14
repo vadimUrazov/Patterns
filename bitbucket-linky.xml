@@ -1,0 +1,10 @@
+<application>
+  <component name="BitbucketCloudRegistry">
+    <lookup />
+  </component>
+  <component name="BitbucketServerRegistry">
+    <instances />
+    <lookup />
+  </component>
+  <component name="Instance" id="c03a4117-ceab-4f61-a5b2-66ccc2717c0e" version="2020.2.135" />
+</application>
