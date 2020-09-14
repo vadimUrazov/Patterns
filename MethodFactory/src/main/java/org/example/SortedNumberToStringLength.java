@@ -14,19 +14,10 @@ public class SortedNumberToStringLength implements Isort {
     }
 
     @Override
-    public void sortNatural() {
-
-    }
-
-    @Override
-    public void sortToStrLen() {
+    public void sort() {
         list.sort((o1, o2) -> Integer.valueOf(o1.toString().length()).
                 compareTo(Integer.valueOf(o2.toString().length())));
         System.out.println(list.toString());
     }
 
-    @Override
-    public void sortHash() {
-
-    }
 }

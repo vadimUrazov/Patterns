@@ -4,9 +4,6 @@ import java.util.List;
 
 public interface Isort {
 
-    void sortNatural();
+    void sort();
 
-    void sortToStrLen();
-
-    void sortHash();
 }

@@ -14,18 +14,9 @@ public class SortedHashCode implements Isort {
     }
 
     @Override
-    public void sortNatural() {
-
-    }
-
-    @Override
-    public void sortToStrLen() {
-
-    }
-
-    @Override
-    public void sortHash() {
+    public void sort() {
         list.sort((o1, o2) -> Integer.compare(o1.hashCode(), o2.hashCode()));
         System.out.println(list.toString());
     }
+
 }
