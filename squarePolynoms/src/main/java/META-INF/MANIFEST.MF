@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: SqPolynom
-Class-Path: C:\university_\squarePolynoms\src\main\java\squarePolynom\Sq
- Polynom
-
