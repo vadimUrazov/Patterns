@@ -14,19 +14,9 @@ public class SortedNumber implements Isort {
     }
 
     @Override
-    public void sortNatural() {
+    public void sort() {
         list.sort(Comparator.naturalOrder());
         System.out.println(list.toString());
-    }
-
-    @Override
-    public void sortToStrLen() {
-
-    }
-
-    @Override
-    public void sortHash() {
-
     }
 
 }
