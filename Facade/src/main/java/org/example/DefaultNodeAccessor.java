@@ -1,4 +1,5 @@
 package org.example;
+
 import com.sun.webkit.dom.NodeImpl;
 import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 import org.w3c.dom.Document;
@@ -9,7 +10,6 @@ import java.util.*;
 
 /**
  * Hello world!
- *
  */
 interface INodeAccessor {
     Node getChildNodeByName(Node parentNode, String nodeName);
@@ -30,6 +30,7 @@ interface INodeAccessor {
 
     boolean hasValue(Node node);
 }
+
 class DefaultNodeAccessor implements INodeAccessor {
     public Node getChildNodeByName(Node parent, String nodeName) {
         for (Node node = parent.getFirstChild();
@@ -127,11 +128,11 @@ class DefaultNodeAccessor implements INodeAccessor {
 
 
 }
-class Client{
-    public static void main(String[] args) {
-            SOAPPart s=new SOAPPart1_1Impl();
-DefaultNodeAccessor defaultNodeAccessor=new DefaultNodeAccessor();
-defaultNodeAccessor.hasValue(s);
 
+class Client {
+    public static void main(String[] args) {
+        SOAPPart s = new SOAPPart1_1Impl();
+        DefaultNodeAccessor defaultNodeAccessor = new DefaultNodeAccessor();
+        System.out.println(defaultNodeAccessor.hasValue(s));
     }
 }
