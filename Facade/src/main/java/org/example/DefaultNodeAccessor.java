@@ -132,7 +132,9 @@ class DefaultNodeAccessor implements INodeAccessor {
 class Client {
     public static void main(String[] args) {
         SOAPPart s = new SOAPPart1_1Impl();
-        DefaultNodeAccessor defaultNodeAccessor = new DefaultNodeAccessor();
+
+        INodeAccessor defaultNodeAccessor = new DefaultNodeAccessor();
         System.out.println(defaultNodeAccessor.hasValue(s));
+        //проверка есть ли значение и потомок  у элемента  в DOM-дереве. true-есть,false-нет
     }
 }
