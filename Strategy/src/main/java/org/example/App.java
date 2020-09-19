@@ -1,8 +1,5 @@
 package org.example;
 
-/**
- * Hello world!
- */
 abstract class Fighter {
     KickBehavior kickBehavior;
     JumpBehavior jumpBehavior;
