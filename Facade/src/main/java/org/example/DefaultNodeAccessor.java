@@ -1,8 +1,10 @@
 package org.example;
 import com.sun.webkit.dom.NodeImpl;
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPPart1_1Impl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import javax.xml.soap.SOAPPart;
 import java.util.*;
 
 /**
@@ -123,7 +125,13 @@ class DefaultNodeAccessor implements INodeAccessor {
         return false;
     }
 
+
+}
+class Client{
     public static void main(String[] args) {
+            SOAPPart s=new SOAPPart1_1Impl();
+DefaultNodeAccessor defaultNodeAccessor=new DefaultNodeAccessor();
+defaultNodeAccessor.hasValue(s);
 
     }
 }
